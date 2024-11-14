@@ -1,3 +1,3 @@
 Script,Average Reward per Episode,Final Debt after Trials,Final Savings after Trials
-random_action.py,10930.452598796322,1895.097225975051,18623.10844170629
-q_learning.py,12527.61860773345,3290.0863476613754,20539.265937133456
+random_action.py,11758.72,1611.01,19998.07
+q_learning.py,14468.96,2256.41,24581.11
