@@ -112,8 +112,6 @@ The performance of `random_action.py` and `q_learning.py` was visualized in bar 
 
 These are the results comparing the final optimized q learning to random actions (the baseline that takes random actions at each month). 
 
-![][image1]![][image2]![][image3]
-
 - Q\_learning always optimizes happiness except for struggling household, and is better than random for well-off households.
 
 OTHER EXPERIMENTS RUN TO OPTIMIZE Q LEARNING TO WHAT IT IS NOW:
