@@ -2,7 +2,7 @@
 
 Our project aims to develop a household budget optimization model using Markov Decision Processes (MDPs). The model will help users make informed financial decisions by considering uncertainties like income fluctuations and unexpected expenses. The goal is to achieve long-term financial stability by balancing immediate spending needs with future savings. We model the financial state of a household and provide action recommendations to optimize budgeting over a specified time horizon.
 
-### **Uncertainty Modeling**
+**Uncertainty Modeling**
 
 Uncertainty was modeled for random\_actions.py and q\_learning.py using probabilities to simulate real-world unpredictability:
 
@@ -16,24 +16,24 @@ Uncertainty was modeled for random\_actions.py and q\_learning.py using probabil
   * Monthly savings growth: 0.5%.  
   * Monthly debt growth: 1%.
 
-### **Input Customization**
+**Input Customization**
 
 Both `random_action.py` and `q_learning.py` were updated to accept **initial state values** (e.g., income, savings, debt) directly from the terminal (our end-to-end implementation). This allows users to simulate various financial scenarios using commands like:
 
 python random\_actions.py \--income=6215 \--expenses=5577 \--savings=5300 \--debt=6380  
 python q\_learning.py \--income=6215 \--expenses=5577 \--savings=5300 \--debt=6380
 
-**q\_learning.py**
+###  **q\_learning.py**
 
 This script implements an advanced Q-Learning algorithm tailored for household budget optimization, incorporating nuanced financial dynamics and multi-objective rewards. Below, we outline the critical components and improvements made to the original implementation:
 
-### **Objectives**
+**Objectives**
 
 The algorithm optimizes not only for **increased savings** and **reduced debt** but also includes a **happiness factor** that incentivizes spending. This modification ensures that the policy reflects realistic human behavior, balancing financial goals with quality-of-life considerations:
 
 * **Happiness Factor**: Integrated into the reward function, it grows as expenses increase, up to a reasonable cap.
 
-### **Budgeting and Learning**
+**Budgeting and Learning**
 
 Initially, the Q-Learning implementation set 10 episodes of 12 months, mistakenly equating episodes with budgeting years. This was corrected:
 
@@ -41,7 +41,7 @@ Initially, the Q-Learning implementation set 10 episodes of 12 months, mistakenl
 * **Months**: Represent the actual budgeting period. For a 5-year budget, `NUM_MONTHS` was set to 60\.  
 * **Improved Learning**: Increased `NUM_EPISODES` to 100, allowing the model to explore and converge on the optimal policy.
 
-### **State Transition Adjustments**
+ **State Transition Adjustments**
 
 The way state values (e.g., savings, debt) change based on actions was refined for realism:
 
@@ -51,9 +51,9 @@ The way state values (e.g., savings, debt) change based on actions was refined f
    * **pay\_debt**: Prioritizes debt repayment, with any remainder added to savings.  
    * **increase\_spending**: Allowed only if savings exceed a threshold (`income * 0.05 * NUM_MONTHS`).
 
-### **Optimizations in Q-Learning**
+**Optimizations in Q-Learning**
 
-#### **Reward Function**
+**Reward Function**
 
 * **Original**: Basic rewards for savings and happiness; penalties for debt.  
 * **Optimized**:  
@@ -62,20 +62,20 @@ The way state values (e.g., savings, debt) change based on actions was refined f
     * \+$2,000 for savings \> $10,000.  
     * \+$5,000 for savings \> $20,000.
 
-#### **Hyperparameters**
+**Hyperparameters**
 
 * Adjusted for improved learning dynamics:  
   * **Learning Rate**: Increased from 0.1 to 0.2 for faster updates.  
   * **Discount Factor**: Reduced from 0.9 to 0.85 to balance short- and long-term rewards.  
   * **Epsilon Decay**: Slowed (0.99) for extended exploration.
 
-#### **Action Selection**
+**Action Selection**
 
 * Epsilon-greedy exploration was used (softmax action selection explored in experiment below)
 
-**run\_trials.py**
+### **run\_trials.py**
 
-### **Testing Multiple Scenarios**
+**Testing Multiple Scenarios**
 
 The testing process in `run_trials.py` was expanded to evaluate the algorithms across 10 trials for diverse financial situations. Input values were derived from reliable sources and represent reasonable deviations from median statistics:
 
@@ -86,7 +86,7 @@ The testing process in `run_trials.py` was expanded to evaluate the algorithms a
 
 Each input combination was categorized into distinct household types, such as "Median Household," "Struggling Household," and "Well-Off Household." `run_trials.py` generates comparison graphs for **savings**, **debt**, and **happiness factor**.
 
-### **Graphical Comparisons**
+ **Graphical Comparisons**
 
 The performance of `random_action.py` and `q_learning.py` was visualized in bar graphs with:
 
